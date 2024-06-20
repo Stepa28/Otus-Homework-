@@ -1,0 +1,16 @@
+﻿services:
+      
+  db:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: Homework
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: 11
+
+  firstdb:
+    image: firstdb
+    build:
+      context: ../
+      dockerfile: FirstDb/Dockerfile
