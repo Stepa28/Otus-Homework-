@@ -32,12 +32,12 @@ public class Play(IOConsole io, IRandom rand, IValidateInt valid, ICompared comp
         countRound++;
         var userInput = converter.Convert(str);
         var res = compared.Compared(hiddenNumber, userInput);
-        return res == 0;
+        return res != 0;
     }
 
     public void Gamble()
     {
-        while (!MakeMove()){}
+        while (MakeMove()){}
         Finished();
     }
 }
