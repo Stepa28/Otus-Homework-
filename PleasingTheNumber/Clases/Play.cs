@@ -5,16 +5,16 @@ namespace PleasingTheNumber.Clases;
 public class Play(IOConsole io, IRandom rand, IValidateInt valid, ICompared compared, IIntConverter converter) : IPlayable
 {
     private int countRound = 1;
-    private int hiddenNumber = 0;
+    private Number hiddenNumber = new GenerateNumber();
 
     public void Finished()
     {
-        io.Write($"Ура вы победили за {countRound-1} раундов\n");
+        io.Write($"Ура вы победили за {countRound - 1} раундов\n");
     }
 
     public void Init()
     {
-        hiddenNumber = rand.Next();
+        hiddenNumber.Set(rand.Next());
         io.Write("Приложение загадало число от 1 до 100, вводите числа, а приложение будет говорить больше оно искомого или меньше\n");
     }
 
@@ -31,13 +31,14 @@ public class Play(IOConsole io, IRandom rand, IValidateInt valid, ICompared comp
 
         countRound++;
         var userInput = converter.Convert(str);
-        var res = compared.Compared(hiddenNumber, userInput);
+        var res = compared.Compared(hiddenNumber.Get(), userInput);
         return res != 0;
     }
 
     public void Gamble()
     {
-        while (MakeMove()){}
+        while (MakeMove()) {}
+
         Finished();
     }
 }

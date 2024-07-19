@@ -1,11 +1,13 @@
 ﻿using PleasingTheNumber.Clases;
+using PleasingTheNumber.Interface;
 
-var paly = new Play(
+IPlayable play = new Play(
     new IOConsole(new OutputConsole(), new InputConsole())
     , new Rnd()
     , new ValidateInt()
     , new Compare()
     , new IntConverter()
     );
-paly.Init();
-paly.Gamble();
+
+play.Init();
+play.Gamble();
