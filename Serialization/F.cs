@@ -18,6 +18,15 @@ public record F
         i5 = IntValue(items[4]);
     }
     
+    public F(int int1, int int2, int int3, int int4, int int5)
+    {
+        i1 = int1;
+        i2 = int2;
+        i3 = int3;
+        i4 = int4;
+        i5 = int5;
+    }
+    
     public F(byte[] arr)
     {
         if(arr.Length < 20)
